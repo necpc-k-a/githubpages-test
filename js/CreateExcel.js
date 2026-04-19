@@ -1,3 +1,5 @@
+const TEMPLATE_SHEET_NAME = "OS1";
+
 async function createExcel() {
     const zip = new JSZip();
     zip.file("[Content_Types].xml", createContentTypes());
@@ -84,7 +86,7 @@ function createXlWorkbook() {
                     xr2:uid="{00000000-000D-0000-FFFF-FFFF00000000}" />
             </bookViews>
             <sheets>
-                <sheet name="OS1" sheetId="1" r:id="rId1" />
+                <sheet name="${TEMPLATE_SHEET_NAME}" sheetId="1" r:id="rId1" />
             </sheets>
             <calcPr calcId="191029" />
         </workbook>
@@ -617,7 +619,7 @@ function createDocPropsApp() {
             </HeadingPairs>
             <TitlesOfParts>
                 <vt:vector size="1" baseType="lpstr">
-                    <vt:lpstr>OS1</vt:lpstr>
+                    <vt:lpstr>${TEMPLATE_SHEET_NAME}</vt:lpstr>
                 </vt:vector>
             </TitlesOfParts>
             <Manager></Manager>

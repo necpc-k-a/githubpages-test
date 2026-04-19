@@ -41,11 +41,24 @@ function fileToBase64(file) {
  * Excelファイルを読み込み、ワークブックを生成
  * @param {Blob} blob ExcelファイルのBlobオブジェクト 
  */
+async function loadExcel2(blob) {
+    const arraBuffer = await blobToArrayBuffer(blob);
+    // ExcelJSのワークブックを生成してExcelファイルをロード
+    workbook2 = new ExcelJS.Workbook();
+    await workbook2.xlsx.load(arraBuffer);
+}
+
+/**
+ * Excelファイルを読み込み、ワークブックを生成
+ * @param {Blob} blob ExcelファイルのBlobオブジェクト
+ * @returns {Promise<ExcelJS.Workbook>} ExcelJSのワークブックオブジェクト
+ */
 async function loadExcel(blob) {
     const arraBuffer = await blobToArrayBuffer(blob);
     // ExcelJSのワークブックを生成してExcelファイルをロード
-    workbook = new ExcelJS.Workbook();
+    const workbook = new ExcelJS.Workbook();
     await workbook.xlsx.load(arraBuffer);
+    return workbook;
 }
 
 /**
